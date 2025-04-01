@@ -55,5 +55,24 @@ public class Juego {
         System.out.println("\nCartas restantes en el mazo después de devolver una carta de cada jugador:");
         System.out.println("Mazo actual: " + mazo.getCartas().size() + " cartas restantes");
         System.out.println(mazo);
+
+        // Repartir el mazo completo
+        List<Carta> mazoTemporal = mazo.repartir(52);
+
+        // Visualizar las cartas en un formato gráfico
+        int x = 55;
+        int y = 15;
+
+        for (int i = 0; i < 52; i++) {
+            Visualizador.carta(mazoTemporal.get(i), new Posicion(x, y));
+            
+            x += 120;
+            
+            // Cambio de fila después de 10 cartas
+            if ((i + 1) % 10 == 0) {
+                y += 120;
+                x = 55;
+            }
+        }
     }
 }
